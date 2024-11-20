@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import "./App.css";
 
 function App() {
   const [length, setLength] = useState(8);
