@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./App.css";
 
@@ -10,12 +11,12 @@ function App() {
   // useRef hook
   const passwordRef = useRef(null);
   const copyToClipboard = useCallback(() => {
-    passwordRef.current?.select()
+    passwordRef.current?.select();
 
     // selects only the range
-    passwordRef.current?.setSelectionRange(0, 99)
+    passwordRef.current?.setSelectionRange(0, 99);
 
-    window.navigator.clipboard.writeText(password)
+    window.navigator.clipboard.writeText(password);
   }, [password]);
 
   const passwordGenerator = useCallback(() => {
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <>
+      <SpeedInsights/>
       <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 text-orange-500 bg-gray-800">
         <h1 className="text-center mb-3 text-white">Password Generator</h1>
         <div className="flex shadow rounded-lg overflow-hidden mb-4">
@@ -50,9 +52,10 @@ function App() {
             readOnly
             ref={passwordRef}
           />
-          <button 
-          onClick={copyToClipboard}
-          className="hover:bg-blue-700 active:bg-blue-800 outline-none bg-blue-800 text-white px-3 py-2 shrink-0">
+          <button
+            onClick={copyToClipboard}
+            className="hover:bg-blue-700 active:bg-blue-800 outline-none bg-blue-800 text-white px-3 py-2 shrink-0"
+          >
             Copy
           </button>
         </div>
