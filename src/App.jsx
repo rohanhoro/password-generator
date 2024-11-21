@@ -39,57 +39,58 @@ function App() {
 
   return (
     <>
-      <SpeedInsights/>
-      <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 text-orange-500 bg-gray-800">
-        <h1 className="text-center mb-3 text-white">Password Generator</h1>
-        <div className="flex shadow rounded-lg overflow-hidden mb-4">
-          <input
-            className="outline-none w-full py-1 px-3"
-            type="text"
-            value={password}
-            placeholder="password"
-            readOnly
-            ref={passwordRef}
-          />
-          <button
-            onClick={copyToClipboard}
-            className="hover:bg-blue-700 active:bg-blue-800 outline-none bg-blue-800 text-white px-3 py-2 shrink-0"
-          >
-            Copy
-          </button>
+      <SpeedInsights>
+        <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 text-orange-500 bg-gray-800">
+          <h1 className="text-center mb-3 text-white">Password Generator</h1>
+          <div className="flex shadow rounded-lg overflow-hidden mb-4">
+            <input
+              className="outline-none w-full py-1 px-3"
+              type="text"
+              value={password}
+              placeholder="password"
+              readOnly
+              ref={passwordRef}
+            />
+            <button
+              onClick={copyToClipboard}
+              className="hover:bg-blue-700 active:bg-blue-800 outline-none bg-blue-800 text-white px-3 py-2 shrink-0"
+            >
+              Copy
+            </button>
+          </div>
+          <div className="flex text-sm justify-between">
+            <div className="flex items-center gap-x-1">
+              <input
+                className="cursor-pointer"
+                type="range"
+                min={8}
+                max={40}
+                value={length}
+                onChange={(e) => setLength(e.target.value)}
+              />
+              <label>Length: {length}</label>
+            </div>
+            <div className="flex items-center gap-x-1">
+              <input
+                type="checkbox"
+                defaultChecked={numAllowed}
+                id="numberInput"
+                onChange={() => setNumAllowed((prev) => !prev)}
+              />
+              <label htmlFor="numberInput">Numbers</label>
+            </div>
+            <div className="flex items-center gap-x-1">
+              <input
+                type="checkbox"
+                defaultChecked={charAllowed}
+                id="characterInput"
+                onChange={() => setCharAllowed((prev) => !prev)}
+              />
+              <label htmlFor="characterInput">Characters</label>
+            </div>
+          </div>
         </div>
-        <div className="flex text-sm justify-between">
-          <div className="flex items-center gap-x-1">
-            <input
-              className="cursor-pointer"
-              type="range"
-              min={8}
-              max={40}
-              value={length}
-              onChange={(e) => setLength(e.target.value)}
-            />
-            <label>Length: {length}</label>
-          </div>
-          <div className="flex items-center gap-x-1">
-            <input
-              type="checkbox"
-              defaultChecked={numAllowed}
-              id="numberInput"
-              onChange={() => setNumAllowed((prev) => !prev)}
-            />
-            <label htmlFor="numberInput">Numbers</label>
-          </div>
-          <div className="flex items-center gap-x-1">
-            <input
-              type="checkbox"
-              defaultChecked={charAllowed}
-              id="characterInput"
-              onChange={() => setCharAllowed((prev) => !prev)}
-            />
-            <label htmlFor="characterInput">Characters</label>
-          </div>
-        </div>
-      </div>
+      </SpeedInsights>
     </>
   );
 }
